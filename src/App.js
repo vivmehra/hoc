@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import ClickCounter from './components/ClickCounter'
+import HoverComponent from './components/HoverCounter'
+import NameTag from './components/nameTag'
 import './App.css';
+
+const makeGreen = BaseComponent => props=> {
+  const addGreen = {
+    style: {
+      color: 'green'
+    }
+  };
+  const newProps = { ...props, ... addGreen}
+  return <BaseComponent {... newProps} />;
+}
+
+const GreenNameTag = makeGreen(NameTag)
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ClickCounter name= 'vivek' />
+      <HoverComponent />
+      <GreenNameTag name= 'vivek mehra'/>
     </div>
   );
 }
